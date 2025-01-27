@@ -1,0 +1,58 @@
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+header{
+}
+
+h1{
+    font-size: 55px;
+    color: sandybrown;
+    margin: 15px;
+}
+
+main section.board ul{
+    list-style: none;
+}
+
+main section.board ul li{
+    display: flexbox;
+    flex-direction: column;
+}
+
+main section.board ul li div{
+    border-bottom: 1px solid sandybrown;
+}
+
+main section.board ul li{
+    margin-bottom: 30px;
+}
+
+main section.write{
+    width: 90%;
+    margin: 0 auto;
+    background-color:white;
+    padding: 15px;
+}
+
+main section.write form{
+    display: flex;
+    flex-direction: column;
+}
+
+main section.write form p{
+    margin: 5px;
+}
+
+main section.write form input{
+    width: 90%;
+    height: 50px;
+}
+
+main section.write form button{
+    margin: 15px 0 0 0;
+    width: 90px;
+}

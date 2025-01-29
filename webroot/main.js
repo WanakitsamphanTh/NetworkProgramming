@@ -43,7 +43,7 @@ $(document).ready(function(){
 
     form.on("submit",function(e){
         e.preventDefault();
-        const inputValue = input.val().replaceAll("\n","<br>").replaceAll(",","<comma>");
+        const inputValue = input.val().replaceAll("。\n","\n").replaceAll("\n","<br>").replaceAll(",","<comma>");
         const nameValue = uname.val();
         console.log(inputValue)
 
@@ -74,24 +74,20 @@ const formatDate = (date) => {
 //コメントを１つ表示
 function displayComment(data){
     const newLi = $("<li></li>");
-    const newA = $("<a></a>");
-    const newH = $("<h4></h4>");
+    const newDiv = $('<div class="msg-box"></div>');
+    const newH = $('<h4 class = "msg-head"></h4>');
 
     newH.text(`${data.name}さんより（${data.date}）`);
-    newA.append(newH);
-    
-    const newP = $("<div></div>");
+    newDiv.append(newH);
 
     const lines = data.content.replaceAll("<comma>",",").split("<br>");
     let content = ""
     lines.forEach((val) => {
-        content = content + "<p>" + val + "</p>";
+        content = content + '<p class = "msg-content">' + val + "</p>";
     });
-    newP.append(content);
+    newDiv.append(content);
 
-    newLi.append(newA);
-    newLi.append(newP);
-
+    newLi.append(newDiv);
     board.append(newLi);
 }
 
@@ -108,9 +104,9 @@ function createJSON(date,name,content){
 function sendToServer(data) {
     const url = '/send';
     $.post(url,JSON.stringify(data), function(res){
-        res = JSON.parse(res);
-        displayComment(res);
-        num_of_comments += 1;
+        //res = JSON.parse(res);
+        //displayComment(res);
+        //num_of_comments += 1;
     });
 }
 
@@ -129,8 +125,22 @@ setInterval(function(){
     $.post(url,"").done(function(res){
         let list = JSON.parse(res);
         while(num_of_comments < list.length){
+            let trigger = isAtBottom();
             displayComment(list[num_of_comments]);
             num_of_comments += 1;
+            if (trigger) scrollToBottom();
         }
+        
     });
-},5000);
+},1000);
+
+function isAtBottom(){
+    let board = $(".board")[0];
+    let x = Math.abs(board.scrollTop - (board.scrollHeight - board.offsetHeight))
+    return x <= 1;
+}
+
+function scrollToBottom(x){
+    let board = $(".board")[0];
+    board.scrollTop = board.scrollHeight;
+}

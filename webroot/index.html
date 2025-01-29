@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@800&display=swap" rel="stylesheet">
     <title>みりおんちゃんねる</title>
 </head>
+
 <body>
     <div class="wrapper">
-        <header>
-            <h1>みりおんちゃんねる</h1>
-        </header>
-
-        <main>
-            <section class="board">
+        <div class="header">
+            <p>みりおんちゃんねる</p>
+        </div>
+        <div class="main">
+            <div class="board">
                 <ul id="board-list">
-                    <li>
-                    </li>
                 </ul>
-            </section>
+            </div>
 
-            <section class="write">
-                <form id="post-form">
-                    <p>ご自由にお書きください😄</p>
-                    <!--<input type="text" id="post-input"/>-->
-                    <textarea placeholder="おはよう～～～" style="height: 40px; width: 100%" id="post-input"></textarea>
-                    <p>お名前：<input type="text" id="post-name" style="height: 15px; width: 20%"/></p>
-                    <button type="submit" id="submit-button">送信</button>
+            <div class="write">
+                <form id="post-form" style="height: 100%">
+                    <span style="height: 30%">
+                        <input type="text" placeholder="氏名" id="post-name" style="height: 70%; width: 20%" />
+                        <button type="submit" id="submit-button">送信</button>
+                    </span>
+                    <span style="height: 70%">
+                        <textarea placeholder="おはよう～～～" style="height: 90%; width: 100%" id="post-input"></textarea>
+                    </span>
                 </form>
-            </section>
-        </main>
+            </div>
+        </div>
     </div>
 
     <script src="main.js"></script>
 </body>
+
 </html>
